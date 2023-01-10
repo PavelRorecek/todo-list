@@ -180,6 +180,7 @@ internal class TodoListRepositoryImplTest {
         }
     }
 
+    @Suppress("SwallowedException")
     private fun runRepositoryTest(
         testBody: suspend TestScope.() -> Unit,
     ) {

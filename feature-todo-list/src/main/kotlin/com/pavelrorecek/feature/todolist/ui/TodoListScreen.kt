@@ -67,8 +67,6 @@ internal fun TodoListScreen(
     onNewTodoTitle: (String) -> Unit,
 ) {
     BaseScreen {
-        val focusManager = LocalFocusManager.current
-
         Column(modifier = Modifier.fillMaxSize()) {
             if (state.isEmptyVisible) {
                 Box(
@@ -132,28 +130,41 @@ internal fun TodoListScreen(
                         .animateContentSize(),
                 ) {
                     if (state.isAddVisible) {
-                        IconButton(
+                        AddButton(
                             modifier = Modifier
                                 .padding(start = 8.dp, end = 4.dp)
                                 .size(addButtonSize),
-                            onClick = {
-                                onAdd()
-                                focusManager.clearFocus()
-                            },
-                        ) {
-                            Icon(
-                                modifier = Modifier.padding(8.dp),
-                                painter = painterResource(id = R.drawable.add),
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
-                            )
-                        }
+                            onAdd = onAdd,
+                        )
                     } else {
                         Spacer(modifier = Modifier.size(16.dp))
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun AddButton(
+    modifier: Modifier,
+    onAdd: () -> Unit,
+) {
+    val focusManager = LocalFocusManager.current
+
+    IconButton(
+        modifier = modifier,
+        onClick = {
+            onAdd()
+            focusManager.clearFocus()
+        },
+    ) {
+        Icon(
+            modifier = Modifier.padding(8.dp),
+            painter = painterResource(id = R.drawable.add),
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary,
+        )
     }
 }
 
@@ -225,6 +236,7 @@ private fun TodoCard(
 
 @Preview
 @Composable
+@Suppress("UnusedPrivateMember")
 private fun TodoListWithoutItems() {
     AppTheme {
         TodoListScreen(
@@ -245,6 +257,7 @@ private fun TodoListWithoutItems() {
 
 @Preview
 @Composable
+@Suppress("UnusedPrivateMember")
 private fun TodoListWithItems() {
     AppTheme {
         TodoListScreen(
