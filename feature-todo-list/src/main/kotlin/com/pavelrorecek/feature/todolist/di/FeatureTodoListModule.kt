@@ -14,11 +14,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-val featureTodoListModule = module {
+public val featureTodoListModule: Module = module {
     factory<Json> { Json }
     factoryOf(::TodoEoMapper)
     single {

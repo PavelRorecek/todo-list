@@ -45,7 +45,7 @@ import com.pavelrorecek.feature.todolist.presentation.ListViewModel.State.TodoSt
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun TodoListScreen() {
+public fun TodoListScreen() {
     val viewModel: ListViewModel = koinViewModel()
     val state = viewModel.state.collectAsState().value
 

@@ -18,7 +18,10 @@ internal fun Project.configureKotlinAndroid(
         }
 
         kotlinOptions {
-            freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+            freeCompilerArgs += listOf(
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xexplicit-api=strict",
+            )
         }
     }
 }
