@@ -5,7 +5,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 
 @Composable
-fun BaseScreen(
+public fun BaseScreen(
     content: @Composable () -> Unit,
 ) {
     Surface(color = MaterialTheme.colorScheme.background) {
