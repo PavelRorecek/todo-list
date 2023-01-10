@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">Todo List</string>
-    <string name="add_todo_placeholder">E.g.: Wash the dishes…</string>
-    <string name="empty_todo_list">Your todo list is empty.\n\nCreate a new entry using the text field at the bottom.</string>
 </resources>
