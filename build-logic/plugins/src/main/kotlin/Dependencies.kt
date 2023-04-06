@@ -15,6 +15,7 @@ object Dependencies {
     }
 
     const val mockk = "io.mockk:mockk:1.13.3"
+    const val paparazzi = "app.cash.paparazzi:paparazzi-gradle-plugin:1.2.0"
 
     object Serialization {
         const val json = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"

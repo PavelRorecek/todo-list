@@ -11,4 +11,5 @@ dependencies {
     api(Dependencies.Kotest.core)
     api(Dependencies.junit)
     api(Dependencies.mockk)
+    api(Dependencies.paparazzi)
 }

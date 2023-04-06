@@ -7,7 +7,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
-class TestDispatcherRule : TestWatcher() {
+public class TestDispatcherRule : TestWatcher() {
 
     private val testDispatcher = UnconfinedTestDispatcher()
 
