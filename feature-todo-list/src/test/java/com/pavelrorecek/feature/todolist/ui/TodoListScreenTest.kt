@@ -26,9 +26,12 @@ internal class TodoListScreenTest {
             TodoListScreen(
                 state = State(
                     newTodoTitle = "",
+                    addTodoPlaceholder = "E.g.: Wash the dishes…",
+
                     isAddVisible = false,
                     isEmptyVisible = true,
                     isListVisible = false,
+                    emptyMessage = "Your todo list is empty.",
                 ),
             )
         }
@@ -40,6 +43,7 @@ internal class TodoListScreenTest {
             TodoListScreen(
                 state = State(
                     newTodoTitle = "Vacuum the floors",
+                    addTodoPlaceholder = "E.g.: Wash the dishes…",
                     isAddVisible = true,
                     isEmptyVisible = false,
                     todoItems = listOf(
@@ -61,6 +65,7 @@ internal class TodoListScreenTest {
                         ),
                     ),
                     isListVisible = true,
+                    emptyMessage = "",
                 ),
             )
         }

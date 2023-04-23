@@ -28,6 +28,24 @@ internal class ListViewModelTest {
     val testDispatcherRule = TestDispatcherRule()
 
     @Test
+    fun `should map empty string to state`() = runTest {
+        val viewModel = viewModel(
+            strings = mockk(relaxed = true) { every { empty() } returns "Empty" },
+        )
+
+        viewModel.state.first().emptyMessage shouldBe "Empty"
+    }
+
+    @Test
+    fun `should map placeholder string to state`() = runTest {
+        val viewModel = viewModel(
+            strings = mockk(relaxed = true) { every { addTodoPlaceholder() } returns "Wash the dishes" },
+        )
+
+        viewModel.state.first().addTodoPlaceholder shouldBe "Wash the dishes"
+    }
+
+    @Test
     fun `should show message when todo list is empty`() = runTest {
         val viewModel = viewModel(
             observeTodoList = mockk { every { this@mockk.invoke() } returns flowOf(emptyList()) },
@@ -262,10 +280,12 @@ internal class ListViewModelTest {
         completeTodo: CompleteTodoUseCase = mockk(relaxUnitFun = true),
         deleteTodo: DeleteTodoUseCase = mockk(relaxUnitFun = true),
         addTodo: AddTodoUseCase = mockk(relaxUnitFun = true),
+        strings: ListStrings = mockk(relaxed = true),
     ) = ListViewModel(
         observeTodoList = observeTodoList,
         completeTodo = completeTodo,
         deleteTodo = deleteTodo,
         addTodo = addTodo,
+        strings = strings,
     )
 }

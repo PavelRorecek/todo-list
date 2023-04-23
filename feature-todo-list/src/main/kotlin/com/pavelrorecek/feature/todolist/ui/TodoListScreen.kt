@@ -28,7 +28,6 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
@@ -77,7 +76,7 @@ internal fun TodoListScreen(
                     contentAlignment = Center,
                 ) {
                     Text(
-                        text = stringResource(id = R.string.empty_todo_list),
+                        text = state.emptyMessage,
                         textAlign = TextAlign.Center,
                         color = MaterialTheme.colorScheme.secondary,
                     )
@@ -119,7 +118,7 @@ internal fun TodoListScreen(
                     placeholder = {
                         Text(
                             color = MaterialTheme.colorScheme.secondary,
-                            text = stringResource(id = R.string.add_todo_placeholder),
+                            text = state.addTodoPlaceholder,
                         )
                     },
                 )
@@ -243,8 +242,10 @@ private fun TodoListWithoutItems() {
             state = ListViewModel.State(
                 todoItems = emptyList(),
                 newTodoTitle = "Do something",
+                addTodoPlaceholder = "E.g.: Wash the dishes…",
                 isAddVisible = true,
                 isEmptyVisible = true,
+                emptyMessage = "Your todo list is empty.",
                 isListVisible = false,
             ),
             onComplete = {},
@@ -289,9 +290,11 @@ private fun TodoListWithItems() {
                     ),
                 ),
                 newTodoTitle = "Do something",
+                addTodoPlaceholder = "E.g.: Wash the dishes…",
                 isAddVisible = true,
                 isListVisible = true,
                 isEmptyVisible = false,
+                emptyMessage = "Your todo list is empty.",
             ),
             onComplete = {},
             onDelete = {},

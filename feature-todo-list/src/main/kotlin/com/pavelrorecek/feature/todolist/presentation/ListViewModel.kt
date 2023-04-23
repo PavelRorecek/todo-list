@@ -19,9 +19,15 @@ internal class ListViewModel(
     val completeTodo: CompleteTodoUseCase,
     val deleteTodo: DeleteTodoUseCase,
     val addTodo: AddTodoUseCase,
+    strings: ListStrings,
 ) : ViewModel() {
 
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State())
+    private val _state: MutableStateFlow<State> = MutableStateFlow(
+        State(
+            emptyMessage = strings.empty(),
+            addTodoPlaceholder = strings.addTodoPlaceholder(),
+        )
+    )
     val state: StateFlow<State> = _state
 
     init {
@@ -83,8 +89,10 @@ internal class ListViewModel(
     data class State(
         val todoItems: List<TodoState> = emptyList(),
         val newTodoTitle: String = "",
+        val addTodoPlaceholder: String,
         val isAddVisible: Boolean = false,
         val isEmptyVisible: Boolean = false,
+        val emptyMessage: String,
         val isListVisible: Boolean = false,
     ) {
 

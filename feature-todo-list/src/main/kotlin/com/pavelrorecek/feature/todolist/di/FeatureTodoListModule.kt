@@ -8,6 +8,8 @@ import com.pavelrorecek.feature.todolist.domain.CompleteTodoUseCase
 import com.pavelrorecek.feature.todolist.domain.DeleteTodoUseCase
 import com.pavelrorecek.feature.todolist.domain.ObserveTodoListUseCase
 import com.pavelrorecek.feature.todolist.domain.TodoListRepository
+import com.pavelrorecek.feature.todolist.platform.ListStringsImpl
+import com.pavelrorecek.feature.todolist.presentation.ListStrings
 import com.pavelrorecek.feature.todolist.presentation.ListViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +39,7 @@ public val featureTodoListModule: Module = module {
     factoryOf(::CompleteTodoUseCase)
     factoryOf(::DeleteTodoUseCase)
     factoryOf(::ObserveTodoListUseCase)
+    factoryOf(::ListStringsImpl) bind ListStrings::class
     viewModelOf(::ListViewModel)
 }
 
